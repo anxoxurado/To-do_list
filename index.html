@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles/style.css" type="text/css">
+</head>
+
+<body>
+
+<div id="myDIV" class="header">
+  <h2>To Do List</h2>
+  <form>
+    <input type="text" id="myInput" placeholder="Titulo...">
+    <span onclick="nuevoli()" class="addBtn">Añadir</span>
+  </form>
+</div>
+
+<ul id="myUL">
+  <li>Hacer tarea</li>
+  <li class="check">Pasear al perro</li>
+</ul>
+
+<script>
+var lista = document.getElementsByTagName("li");
+var i;
+for (i = 0; i < lista.length; i++) {
+  var span = document.createElement("SPAN");
+  var tarea = document.createTextNode("x");
+  span.className = "close";
+  span.appendChild(tarea);
+  lista[i].appendChild(span);
+}
+
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+var alist = document.querySelector('ul');
+alist.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('check');
+  }
+}, false);
+
+function nuevoli() {
+  var li = document.createElement("li");
+  var valor = document.getElementById("myInput").value;
+  var t = document.createTextNode(valor);
+  li.appendChild(t);
+  document.getElementById("myUL").appendChild(li);
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var tarea = document.createTextNode("x");
+  span.className = "close";
+  span.appendChild(tarea);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+</script>
+
+</body>
+</html>
