@@ -10,7 +10,7 @@
 <div id="myDIV" class="header">
   <h2>To Do List</h2>
   <form>
-    <input type="text" id="myInput" placeholder="Titulo...">
+    <input type="text" id="input" placeholder="Titulo...">
     <span onclick="nuevoli()" class="addBtn">Añadir</span>
   </form>
 </div>
@@ -49,11 +49,11 @@ alist.addEventListener('click', function(ev) {
 
 function nuevoli() {
   var li = document.createElement("li");
-  var valor = document.getElementById("myInput").value;
+  var valor = document.getElementById("input").value;
   var t = document.createTextNode(valor);
   li.appendChild(t);
   document.getElementById("myUL").appendChild(li);
-  document.getElementById("myInput").value = "";
+  document.getElementById("input").value = "";
 
   var span = document.createElement("SPAN");
   var tarea = document.createTextNode("x");
